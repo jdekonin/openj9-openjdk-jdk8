@@ -80,6 +80,9 @@ OPENJ9_LIBS_SUBDIR      := @OPENJ9_LIBS_SUBDIR@
 export ac_cv_prog_CC    := @CC@
 export ac_cv_prog_CXX   := @CXX@
 
+# Toolchain type (defined in spec.gmk): gcc, clang, solstudio, lxc, microsoft...
+TOOLCHAIN_VERSION       := @TOOLCHAIN_VERSION@
+
 # Windows
 MSVCP_DLL               := @MSVCP_DLL@
 

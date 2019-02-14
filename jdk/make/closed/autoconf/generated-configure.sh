@@ -877,6 +877,7 @@ MSVCP_DLL
 VS_LIB
 VS_INCLUDE
 VS_PATH
+TOOLCHAIN_VERSION
 CYGWIN_LINK
 OUTPUT_ROOT
 CONF_NAME
@@ -4462,7 +4463,7 @@ VS_SDK_PLATFORM_NAME_2017=
 
 
 # Do not change or remove the following line, it is needed for consistency checks:
-DATE_WHEN_GENERATED=1549641052
+DATE_WHEN_GENERATED=1550174651
 
 ###############################################################################
 #
@@ -16259,6 +16260,8 @@ $as_echo "$as_me: Found $VS_DESCRIPTION" >&6;}
   if test "$TOOLCHAIN_VERSION" -gt 2013; then
     UNSUPPORTED_TOOLCHAIN_VERSION=yes
   fi
+
+
 
 
   # If we have a devkit, skip all of the below.
@@ -28326,6 +28329,8 @@ $as_echo "$as_me: Found $VS_DESCRIPTION" >&6;}
   if test "$TOOLCHAIN_VERSION" -gt 2013; then
     UNSUPPORTED_TOOLCHAIN_VERSION=yes
   fi
+
+
 
 
   # If we have a devkit, skip all of the below.

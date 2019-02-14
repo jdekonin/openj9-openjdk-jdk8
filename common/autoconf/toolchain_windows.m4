@@ -323,6 +323,8 @@ AC_DEFUN([TOOLCHAIN_FIND_VISUAL_STUDIO],
   if test "$TOOLCHAIN_VERSION" -gt 2013; then
     UNSUPPORTED_TOOLCHAIN_VERSION=yes
   fi
+
+  AC_SUBST(TOOLCHAIN_VERSION)
 ])
 
 ################################################################################

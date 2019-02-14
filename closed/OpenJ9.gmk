@@ -61,7 +61,7 @@ override MAKEFLAGS := -j $(JOBS)
 
 ifeq (windows,$(OPENJDK_TARGET_OS))
   # set Visual Studio environment
-  EXPORT_MSVS_ENV_VARS := PATH="$(PATH)" INCLUDE="$(INCLUDE)" LIB="$(LIB)"
+  EXPORT_MSVS_ENV_VARS := PATH="$(PATH)" INCLUDE="$(INCLUDE)" LIB="$(LIB)" MSVC_VERSION="$(TOOLCHAIN_VERSION)"
   # On Windows, the mingw compiler is used for certain files such as
   # the bytecode interpreter.
   # Uncomment the following line to use the default compiler throughout.
