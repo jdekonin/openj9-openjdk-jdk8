@@ -140,6 +140,9 @@ else
   FEATURE_SED_SCRIPT += $(call SedDisable,opt_jitserver)
 endif
 
+# Disable windows rebase.
+SPEC_SED_SCRIPT += $(call SedDisable,uma_windowsRebase)
+
 # Adjust OpenJDK MethodHandles enablement flags.
 ifeq (true,$(OPENJ9_ENABLE_OPENJDK_METHODHANDLES))
   FEATURE_SED_SCRIPT += $(call SedEnable,opt_openjdkMethodhandle)
@@ -378,6 +381,7 @@ run-preprocessors-j9 : stage-j9
 			JAVA_HOME=$(BOOT_JDK) \
 			JAVA_VERSION=80 \
 			OMR_DIR=$(OPENJ9_VM_BUILD_DIR)/omr \
+			OPENJ9_BUILD=true \
 			SOURCETOOLS_DIR=$(call FixPath,$(OPENJ9_TOPDIR))/sourcetools \
 			SPEC=$(OPENJ9_BUILDSPEC) \
 			UMA_OPTIONS_EXTRA="-buildDate $(shell date +'%Y%m%d')" \

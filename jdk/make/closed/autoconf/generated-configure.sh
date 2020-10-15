@@ -1045,7 +1045,6 @@ infodir
 docdir
 oldincludedir
 includedir
-runstatedir
 localstatedir
 sharedstatedir
 sysconfdir
@@ -1307,7 +1306,6 @@ datadir='${datarootdir}'
 sysconfdir='${prefix}/etc'
 sharedstatedir='${prefix}/com'
 localstatedir='${prefix}/var'
-runstatedir='${localstatedir}/run'
 includedir='${prefix}/include'
 oldincludedir='/usr/include'
 docdir='${datarootdir}/doc/${PACKAGE_TARNAME}'
@@ -1560,15 +1558,6 @@ do
   | -silent | --silent | --silen | --sile | --sil)
     silent=yes ;;
 
-  -runstatedir | --runstatedir | --runstatedi | --runstated \
-  | --runstate | --runstat | --runsta | --runst | --runs \
-  | --run | --ru | --r)
-    ac_prev=runstatedir ;;
-  -runstatedir=* | --runstatedir=* | --runstatedi=* | --runstated=* \
-  | --runstate=* | --runstat=* | --runsta=* | --runst=* | --runs=* \
-  | --run=* | --ru=* | --r=*)
-    runstatedir=$ac_optarg ;;
-
   -sbindir | --sbindir | --sbindi | --sbind | --sbin | --sbi | --sb)
     ac_prev=sbindir ;;
   -sbindir=* | --sbindir=* | --sbindi=* | --sbind=* | --sbin=* \
@@ -1706,7 +1695,7 @@ fi
 for ac_var in	exec_prefix prefix bindir sbindir libexecdir datarootdir \
 		datadir sysconfdir sharedstatedir localstatedir includedir \
 		oldincludedir docdir infodir htmldir dvidir pdfdir psdir \
-		libdir localedir mandir runstatedir
+		libdir localedir mandir
 do
   eval ac_val=\$$ac_var
   # Remove trailing slashes.
@@ -1859,7 +1848,6 @@ Fine tuning of the installation directories:
   --sysconfdir=DIR        read-only single-machine data [PREFIX/etc]
   --sharedstatedir=DIR    modifiable architecture-independent data [PREFIX/com]
   --localstatedir=DIR     modifiable single-machine data [PREFIX/var]
-  --runstatedir=DIR       modifiable per-process data [LOCALSTATEDIR/run]
   --libdir=DIR            object code libraries [EPREFIX/lib]
   --includedir=DIR        C header files [PREFIX/include]
   --oldincludedir=DIR     C header files for non-gcc [/usr/include]
@@ -1963,7 +1951,7 @@ Optional Packages:
                           the version of the toolchain to look for, use
                           '--help' to show possible values [platform
                           dependent]
-  --with-msvcp-dll        copy this msvcp100.dll into the built JDK (Windows
+  --with-msvcp-dll        copy this msvcp120.dll into the built JDK (Windows
                           only) [probed]
   --with-freemarker-jar   path to freemarker.jar (used to build OpenJ9 build
                           tools)
@@ -4547,7 +4535,7 @@ VS_SDK_PLATFORM_NAME_2017=
 
 
 # Do not change or remove the following line, it is needed for consistency checks:
-DATE_WHEN_GENERATED=1600276123
+DATE_WHEN_GENERATED=1603308101
 
 ###############################################################################
 #
@@ -17232,12 +17220,12 @@ fi
   POSSIBLE_MSVCP_DLL="$with_msvcp_dll"
   METHOD="--with-msvcp-dll"
   if test -e "$POSSIBLE_MSVCP_DLL" ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
-$as_echo "$as_me: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
+    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
+$as_echo "$as_me: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
 
     # Need to check if the found msvcp is correct architecture
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp100.dll architecture" >&5
-$as_echo_n "checking found msvcp100.dll architecture... " >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp120.dll architecture" >&5
+$as_echo_n "checking found msvcp120.dll architecture... " >&6; }
     MSVCP_DLL_FILETYPE=`$FILE -b "$POSSIBLE_MSVCP_DLL"`
     if test "x$OPENJDK_TARGET_CPU_BITS" = x32 ; then
       CORRECT_MSVCP_ARCH=386
@@ -17248,25 +17236,25 @@ $as_echo_n "checking found msvcp100.dll architecture... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
       MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
-      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp100.dll" >&5
-$as_echo_n "checking for msvcp100.dll... " >&6; }
+      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp120.dll" >&5
+$as_echo_n "checking for msvcp120.dll... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MSVCP_DLL" >&5
 $as_echo "$MSVCP_DLL" >&6; }
     else
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: incorrect, ignoring" >&5
 $as_echo "incorrect, ignoring" >&6; }
-      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&5
-$as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&6;}
+      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&5
+$as_echo "$as_me: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&6;}
     fi
   fi
 
     if test "x$MSVCP_DLL" = x ; then
-      as_fn_error $? "Could not find a proper msvcp100.dll as specified by --with-msvcp-dll" "$LINENO" 5
+      as_fn_error $? "Could not find a proper msvcp120.dll as specified by --with-msvcp-dll" "$LINENO" 5
     fi
   fi
 
   if test "x$MSVCP_DLL" = x ; then
-    # Probe: Using well-known location from Visual Studio 10.0
+    # Probe: Using well-known location from Visual Studio 12.0
     if test "x$VCINSTALLDIR" != x ; then
       CYGWIN_VC_INSTALL_DIR="$VCINSTALLDIR"
 
@@ -17280,20 +17268,20 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
   fi
 
       if test "x$OPENJDK_TARGET_CPU_BITS" = x64 ; then
-        POSSIBLE_MSVCP_DLL="$CYGWIN_VC_INSTALL_DIR/redist/x64/Microsoft.VC100.CRT/msvcp100.dll"
+        POSSIBLE_MSVCP_DLL="$CYGWIN_VC_INSTALL_DIR/redist/x64/Microsoft.VC120.CRT/msvcp120.dll"
       else
-        POSSIBLE_MSVCP_DLL="$CYGWIN_VC_INSTALL_DIR/redist/x86/Microsoft.VC100.CRT/msvcp100.dll"
+        POSSIBLE_MSVCP_DLL="$CYGWIN_VC_INSTALL_DIR/redist/x86/Microsoft.VC120.CRT/msvcp120.dll"
       fi
 
   POSSIBLE_MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
   METHOD="well-known location in VCINSTALLDIR"
   if test -e "$POSSIBLE_MSVCP_DLL" ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
-$as_echo "$as_me: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
+    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
+$as_echo "$as_me: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
 
     # Need to check if the found msvcp is correct architecture
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp100.dll architecture" >&5
-$as_echo_n "checking found msvcp100.dll architecture... " >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp120.dll architecture" >&5
+$as_echo_n "checking found msvcp120.dll architecture... " >&6; }
     MSVCP_DLL_FILETYPE=`$FILE -b "$POSSIBLE_MSVCP_DLL"`
     if test "x$OPENJDK_TARGET_CPU_BITS" = x32 ; then
       CORRECT_MSVCP_ARCH=386
@@ -17304,15 +17292,15 @@ $as_echo_n "checking found msvcp100.dll architecture... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
       MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
-      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp100.dll" >&5
-$as_echo_n "checking for msvcp100.dll... " >&6; }
+      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp120.dll" >&5
+$as_echo_n "checking for msvcp120.dll... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MSVCP_DLL" >&5
 $as_echo "$MSVCP_DLL" >&6; }
     else
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: incorrect, ignoring" >&5
 $as_echo "incorrect, ignoring" >&6; }
-      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&5
-$as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&6;}
+      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&5
+$as_echo "$as_me: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&6;}
     fi
   fi
 
@@ -17321,17 +17309,17 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
 
   if test "x$MSVCP_DLL" = x ; then
     # Probe: Check in the Boot JDK directory.
-    POSSIBLE_MSVCP_DLL="$BOOT_JDK/bin/msvcp100.dll"
+    POSSIBLE_MSVCP_DLL="$BOOT_JDK/bin/msvcp120.dll"
 
   POSSIBLE_MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
   METHOD="well-known location in Boot JDK"
   if test -e "$POSSIBLE_MSVCP_DLL" ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
-$as_echo "$as_me: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
+    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
+$as_echo "$as_me: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
 
     # Need to check if the found msvcp is correct architecture
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp100.dll architecture" >&5
-$as_echo_n "checking found msvcp100.dll architecture... " >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp120.dll architecture" >&5
+$as_echo_n "checking found msvcp120.dll architecture... " >&6; }
     MSVCP_DLL_FILETYPE=`$FILE -b "$POSSIBLE_MSVCP_DLL"`
     if test "x$OPENJDK_TARGET_CPU_BITS" = x32 ; then
       CORRECT_MSVCP_ARCH=386
@@ -17342,15 +17330,15 @@ $as_echo_n "checking found msvcp100.dll architecture... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
       MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
-      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp100.dll" >&5
-$as_echo_n "checking for msvcp100.dll... " >&6; }
+      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp120.dll" >&5
+$as_echo_n "checking for msvcp120.dll... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MSVCP_DLL" >&5
 $as_echo "$MSVCP_DLL" >&6; }
     else
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: incorrect, ignoring" >&5
 $as_echo "incorrect, ignoring" >&6; }
-      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&5
-$as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&6;}
+      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&5
+$as_echo "$as_me: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&6;}
     fi
   fi
 
@@ -17369,17 +17357,17 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
     CYGWIN_SYSTEMROOT="$unix_path"
   fi
 
-    POSSIBLE_MSVCP_DLL="$CYGWIN_SYSTEMROOT/system32/msvcp100.dll"
+    POSSIBLE_MSVCP_DLL="$CYGWIN_SYSTEMROOT/system32/msvcp120.dll"
 
   POSSIBLE_MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
   METHOD="well-known location in SYSTEMROOT"
   if test -e "$POSSIBLE_MSVCP_DLL" ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
-$as_echo "$as_me: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
+    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
+$as_echo "$as_me: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
 
     # Need to check if the found msvcp is correct architecture
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp100.dll architecture" >&5
-$as_echo_n "checking found msvcp100.dll architecture... " >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp120.dll architecture" >&5
+$as_echo_n "checking found msvcp120.dll architecture... " >&6; }
     MSVCP_DLL_FILETYPE=`$FILE -b "$POSSIBLE_MSVCP_DLL"`
     if test "x$OPENJDK_TARGET_CPU_BITS" = x32 ; then
       CORRECT_MSVCP_ARCH=386
@@ -17390,15 +17378,15 @@ $as_echo_n "checking found msvcp100.dll architecture... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
       MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
-      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp100.dll" >&5
-$as_echo_n "checking for msvcp100.dll... " >&6; }
+      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp120.dll" >&5
+$as_echo_n "checking for msvcp120.dll... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MSVCP_DLL" >&5
 $as_echo "$MSVCP_DLL" >&6; }
     else
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: incorrect, ignoring" >&5
 $as_echo "incorrect, ignoring" >&6; }
-      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&5
-$as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&6;}
+      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&5
+$as_echo "$as_me: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&6;}
     fi
   fi
 
@@ -17406,8 +17394,8 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
 
   if test "x$MSVCP_DLL" = x ; then
     # Probe: If Visual Studio Express is installed, there is usually one with the debugger
-    if test "x$VS100COMNTOOLS" != x ; then
-      CYGWIN_VS_TOOLS_DIR="$VS100COMNTOOLS/.."
+    if test "x$VS120COMNTOOLS" != x ; then
+      CYGWIN_VS_TOOLS_DIR="$VS120COMNTOOLS/.."
 
   windows_path="$CYGWIN_VS_TOOLS_DIR"
   if test "x$OPENJDK_BUILD_OS_ENV" = "xwindows.cygwin"; then
@@ -17419,20 +17407,20 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
   fi
 
       if test "x$OPENJDK_TARGET_CPU_BITS" = x64 ; then
-        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VS_TOOLS_DIR" -name msvcp100.dll | $GREP -i /x64/ | $HEAD --lines 1`
+        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VS_TOOLS_DIR" -name msvcp120.dll | $GREP -i /x64/ | $HEAD --lines 1`
       else
-        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VS_TOOLS_DIR" -name msvcp100.dll | $GREP -i /x86/ | $HEAD --lines 1`
+        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VS_TOOLS_DIR" -name msvcp120.dll | $GREP -i /x86/ | $HEAD --lines 1`
       fi
 
   POSSIBLE_MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
-  METHOD="search of VS100COMNTOOLS"
+  METHOD="search of VS120COMNTOOLS"
   if test -e "$POSSIBLE_MSVCP_DLL" ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
-$as_echo "$as_me: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
+    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
+$as_echo "$as_me: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
 
     # Need to check if the found msvcp is correct architecture
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp100.dll architecture" >&5
-$as_echo_n "checking found msvcp100.dll architecture... " >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp120.dll architecture" >&5
+$as_echo_n "checking found msvcp120.dll architecture... " >&6; }
     MSVCP_DLL_FILETYPE=`$FILE -b "$POSSIBLE_MSVCP_DLL"`
     if test "x$OPENJDK_TARGET_CPU_BITS" = x32 ; then
       CORRECT_MSVCP_ARCH=386
@@ -17443,15 +17431,15 @@ $as_echo_n "checking found msvcp100.dll architecture... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
       MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
-      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp100.dll" >&5
-$as_echo_n "checking for msvcp100.dll... " >&6; }
+      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp120.dll" >&5
+$as_echo_n "checking for msvcp120.dll... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MSVCP_DLL" >&5
 $as_echo "$MSVCP_DLL" >&6; }
     else
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: incorrect, ignoring" >&5
 $as_echo "incorrect, ignoring" >&6; }
-      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&5
-$as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&6;}
+      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&5
+$as_echo "$as_me: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&6;}
     fi
   fi
 
@@ -17463,12 +17451,12 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
     # (This was the original behaviour ; kept since it might turn up something)
     if test "x$CYGWIN_VC_INSTALL_DIR" != x ; then
       if test "x$OPENJDK_TARGET_CPU_BITS" = x64 ; then
-        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VC_INSTALL_DIR" -name msvcp100.dll | $GREP x64 | $HEAD --lines 1`
+        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VC_INSTALL_DIR" -name msvcp120.dll | $GREP x64 | $HEAD --lines 1`
       else
-        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VC_INSTALL_DIR" -name msvcp100.dll | $GREP x86 | $GREP -v ia64 | $GREP -v x64 | $HEAD --lines 1`
+        POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VC_INSTALL_DIR" -name msvcp120.dll | $GREP x86 | $GREP -v ia64 | $GREP -v x64 | $HEAD --lines 1`
         if test "x$POSSIBLE_MSVCP_DLL" = x ; then
           # We're grasping at straws now...
-          POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VC_INSTALL_DIR" -name msvcp100.dll | $HEAD --lines 1`
+          POSSIBLE_MSVCP_DLL=`$FIND "$CYGWIN_VC_INSTALL_DIR" -name msvcp120.dll | $HEAD --lines 1`
         fi
       fi
 
@@ -17476,12 +17464,12 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
   POSSIBLE_MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
   METHOD="search of VCINSTALLDIR"
   if test -e "$POSSIBLE_MSVCP_DLL" ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
-$as_echo "$as_me: Found msvcp100.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
+    { $as_echo "$as_me:${as_lineno-$LINENO}: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&5
+$as_echo "$as_me: Found msvcp120.dll at $POSSIBLE_MSVCP_DLL using $METHOD" >&6;}
 
     # Need to check if the found msvcp is correct architecture
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp100.dll architecture" >&5
-$as_echo_n "checking found msvcp100.dll architecture... " >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking found msvcp120.dll architecture" >&5
+$as_echo_n "checking found msvcp120.dll architecture... " >&6; }
     MSVCP_DLL_FILETYPE=`$FILE -b "$POSSIBLE_MSVCP_DLL"`
     if test "x$OPENJDK_TARGET_CPU_BITS" = x32 ; then
       CORRECT_MSVCP_ARCH=386
@@ -17492,15 +17480,15 @@ $as_echo_n "checking found msvcp100.dll architecture... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: ok" >&5
 $as_echo "ok" >&6; }
       MSVCP_DLL="$POSSIBLE_MSVCP_DLL"
-      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp100.dll" >&5
-$as_echo_n "checking for msvcp100.dll... " >&6; }
+      { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp120.dll" >&5
+$as_echo_n "checking for msvcp120.dll... " >&6; }
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: $MSVCP_DLL" >&5
 $as_echo "$MSVCP_DLL" >&6; }
     else
       { $as_echo "$as_me:${as_lineno-$LINENO}: result: incorrect, ignoring" >&5
 $as_echo "incorrect, ignoring" >&6; }
-      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&5
-$as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETYPE" >&6;}
+      { $as_echo "$as_me:${as_lineno-$LINENO}: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&5
+$as_echo "$as_me: The file type of the located msvcp120.dll is $MSVCP_DLL_FILETYPE" >&6;}
     fi
   fi
 
@@ -17508,11 +17496,11 @@ $as_echo "$as_me: The file type of the located msvcp100.dll is $MSVCP_DLL_FILETY
   fi
 
   if test "x$MSVCP_DLL" = x ; then
-    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp100.dll" >&5
-$as_echo_n "checking for msvcp100.dll... " >&6; }
+    { $as_echo "$as_me:${as_lineno-$LINENO}: checking for msvcp120.dll" >&5
+$as_echo_n "checking for msvcp120.dll... " >&6; }
     { $as_echo "$as_me:${as_lineno-$LINENO}: result: no" >&5
 $as_echo "no" >&6; }
-    as_fn_error $? "Could not find msvcp100.dll. Please specify using --with-msvcp-dll." "$LINENO" 5
+    as_fn_error $? "Could not find msvcp120.dll. Please specify using --with-msvcp-dll." "$LINENO" 5
   fi
 
 
